@@ -69,7 +69,7 @@ const StartupCard = ({ post }: { post: MyideaTypeCard }) => {
   )
 };
 
-export const StartupCardSkeleton = () => (
+export const IdeaCardSkeleton = () => (
   <>
     {[0, 1, 2, 3, 4].map((index: number) => (
       <li key={cn("skeleton", index)}>

@@ -1,16 +1,16 @@
 import React from "react";
 import { client } from "@/sanity/lib/client";
-import { STARTUPS_BY_AUTHOR_QUERY } from "@/sanity/lib/queries";
-import StartupCard, { StartupTypeCard } from "@/components/StartupCard";
+import { IDEAS_BY_AUTHOR_QUERY } from "@/sanity/lib/queries";
+import StartupCard, { MyideaTypeCard } from "@/components/StartupCard";
 
 const UserIdeas = async ({ id }: { id: string }) => {
-  const startups = await client.fetch(STARTUPS_BY_AUTHOR_QUERY, { id });
+  const Posts = await client.fetch(IDEAS_BY_AUTHOR_QUERY, { id });
 
   return (
     <>
-      {startups.length > 0 ? (
-        startups.map((startup: StartupTypeCard) => (
-          <StartupCard key={startup._id} post={startup} />
+      {Posts.length > 0 ? (
+        Posts.map((post: MyideaTypeCard) => (
+          <StartupCard key={post._id} post={post} />
         ))
       ) : (
         <p className="no-result">No posts yet</p>

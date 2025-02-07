@@ -2,7 +2,7 @@ import { auth, signIn, signOut } from "@/auth"
 import Image from "@/node_modules/next/image"
 import Link from "@/node_modules/next/link"
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { LogOut } from "lucide-react";
+import { BadgePlus, LogOut } from "lucide-react";
 
 
 const Navbar = async() => {
@@ -18,7 +18,8 @@ console.log("sess in navbar ", session)
           {session && session?.user ? (
             <>
               <Link href="/idea/create">
-                <span>Create</span>
+                <span className="max-sm:hidden">Create</span>
+                <BadgePlus className="size-6 sm:hidden" />
               </Link>
               <form action={async ()=>{
                   "use server"

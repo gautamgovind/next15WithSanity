@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import UserIdeas from "@/components/UserIdeas";
 import { Suspense } from "react";
-import { StartupCardSkeleton } from "@/components/StartupCard";
+import { IdeaCardSkeleton } from "@/components/StartupCard";
 
 export const experimental_ppr = true;
 
@@ -14,7 +14,7 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
   const session = await auth();
 
   const user = await client.withConfig({useCdn: true}).fetch(AUTHOR_BY_ID_QUERY, { id });
-  
+
   if (!user) return notFound();
 
   return (
@@ -45,11 +45,11 @@ const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
           <p className="text-30-bold">
             {session?.id === id ? "Your" : "All"} Startups
           </p>
-          {/* <ul className="card_grid-sm">
-            <Suspense fallback={<StartupCardSkeleton />}>
+          <ul className="card_grid-sm">
+            <Suspense fallback={<IdeaCardSkeleton />}>
               <UserIdeas id={id} />
             </Suspense>
-          </ul> */}
+          </ul>
         </div>
       </section>
     </>
